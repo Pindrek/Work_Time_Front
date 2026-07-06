@@ -1,5 +1,0 @@
-**/image/
-.idea/
-node_modules/
-**/dist/
-.gitignore
