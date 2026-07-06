@@ -1,18 +1,10 @@
+import { patch_func } from "./fetch.js";
 let seconds = 0;
 let minutes = 0;
 let hours = 0;
-async function sendProgress() {
-    const response = await fetch('http://localhost:8000/core/home/', {
-        method: 'PATCH',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({
-            progress: timeToProgress(),
-            progress_bar: 27,
-        })
-    });
-}
+let timer = null;
 export function startTimer() {
-    setInterval(() => {
+    timer = window.setInterval(() => {
         seconds++;
         if (seconds === 60) {
             minutes++;
@@ -22,14 +14,25 @@ export function startTimer() {
             hours++;
             minutes = 0;
         }
-        sendProgress();
+        patch_func(timeToProgress());
     }, 1000);
 }
 export function timeToProgress() {
     return `P0DT${hours}H${minutes}M${seconds}S`;
 }
 const startButton = document.getElementById("start");
+const stopButton = document.getElementById("stop");
 startButton?.addEventListener("click", () => {
-    startTimer();
+    console.log("Start");
+    if (timer === null) {
+        startTimer();
+    }
+});
+stopButton?.addEventListener("click", () => {
+    console.log("stop");
+    if (timer !== null) {
+        clearInterval(timer);
+        timer = null;
+    }
 });
 //# sourceMappingURL=progress.js.map

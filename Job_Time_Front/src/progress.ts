@@ -1,25 +1,29 @@
+import {patch_func} from "./fetch.js";
+
 let seconds: number = 0;
 let minutes: number = 0;
 let hours: number = 0;
 
-async function sendProgress() {
-    try {
-        const response = await fetch('http://localhost:8000/core/home/', {
-            method: 'PATCH',
-            headers: {'content-type': 'application/json'},
-            body: JSON.stringify({
-                progress: timeToProgress(),
-                progress_bar: 27,
-            })
-        })
-    }
-    catch (error) {
-        alert(error);
-    }
-}
+let timer: number | null = null;
+
+// async function sendProgress() {
+//     try {
+//         const response = await fetch('http://localhost:8000/core/home/', {
+//             method: 'PATCH',
+//             headers: {'content-type': 'application/json'},
+//             body: JSON.stringify({
+//                 progress: timeToProgress(),
+//                 progress_bar: 27,
+//             })
+//         })
+//     }
+//     catch (error) {
+//         alert("Error:" + error);
+//     }
+// }
 
 export function startTimer() {
-    setInterval(() => {
+    timer = window.setInterval(() => {
         seconds++;
         if (seconds === 60) {
             minutes++;
@@ -29,7 +33,7 @@ export function startTimer() {
             hours++;
             minutes = 0;
         }
-        sendProgress();
+        patch_func(timeToProgress());
     }, 1000);
 }
 
@@ -38,6 +42,17 @@ export function timeToProgress(): string {
 }
 
 const startButton = document.getElementById("start");
+const stopButton = document.getElementById("stop");
 startButton?.addEventListener("click", () => {
-    startTimer();
+    console.log("Start");
+    if (timer === null) {
+        startTimer();
+    }
+})
+stopButton?.addEventListener("click", () => {
+    console.log("stop");
+    if (timer !== null) {
+        clearInterval(timer);
+        timer = null;
+    }
 })
