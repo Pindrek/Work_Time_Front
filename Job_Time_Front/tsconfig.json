@@ -1,0 +1,13 @@
+{
+  // Visit https://aka.ms/tsconfig to read more about this file
+  "compilerOptions": {
+    "target": "ES2022", // Версія js
+    "module": "ES2022", // Версія системи модулів
+    "rootDir": "./src", // Де лежить весь TS
+    "outDir": "./dist", // Куди складати весь js
+    "noEmitOnError":  true, // При помилці .js не створюється
+    "removeComments": true, // Видалення коментарів при генерації .js
+    "strict": true, // Строга типізація
+    "sourceMap": true // Генерація script.js.map
+  }
+}
