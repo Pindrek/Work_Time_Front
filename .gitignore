@@ -1,4 +1,5 @@
 **/image/
 .idea/
 node_modules/
-**dist/
+**/dist/
+.gitignore
