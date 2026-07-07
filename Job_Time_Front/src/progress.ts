@@ -1,28 +1,15 @@
-import {patch_func} from "./fetch.js";
+import {Patch_func} from "./fetch.js";
+import {ProgressBar} from "./progress_bar.js"
+import {Get_func} from "./fetch.js";
 
-let seconds: number = 0;
-let minutes: number = 0;
-let hours: number = 0;
+const data = await Get_func();
+let seconds: number = parseInt(data[0].progress.slice(10, 12), 10);
+let minutes: number = parseInt(data[0].progress.slice(7, 9), 10);
+let hours: number = parseInt(data[0].progress.slice(4, 6), 10);
 
 let timer: number | null = null;
 
-// async function sendProgress() {
-//     try {
-//         const response = await fetch('http://localhost:8000/core/home/', {
-//             method: 'PATCH',
-//             headers: {'content-type': 'application/json'},
-//             body: JSON.stringify({
-//                 progress: timeToProgress(),
-//                 progress_bar: 27,
-//             })
-//         })
-//     }
-//     catch (error) {
-//         alert("Error:" + error);
-//     }
-// }
-
-export function startTimer() {
+function startTimer() {
     timer = window.setInterval(() => {
         seconds++;
         if (seconds === 60) {
@@ -33,7 +20,7 @@ export function startTimer() {
             hours++;
             minutes = 0;
         }
-        patch_func(timeToProgress());
+        Patch_func(timeToProgress(), ProgressBar());
     }, 1000);
 }
 

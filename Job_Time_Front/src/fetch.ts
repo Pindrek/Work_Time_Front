@@ -1,23 +1,38 @@
-async function post_func() {
+async function Post_func() {
 
 }
 
-export function patch_func(progress_: string) {
-   // try {
-        fetch("http://localhost:8000/core/home/", {
-            method: "PATCH",
-            headers: {"content-type": "application/json"},
-            body: JSON.stringify({
-                progress: progress_,
-                progress_bar: 100,
-            })
+export function Patch_func(progress_: string, progress_bar_: number) {
+    fetch("http://localhost:8000/core/home/", {
+        method: "PATCH",
+        headers: {"content-type": "application/json"},
+        body: JSON.stringify({
+            progress: progress_,
+            progress_bar: progress_bar_,
         })
-   // }
-    //catch (error) {
-   //     console.error(error);
-   // }
+    })
 }
 
-async function get_func() {
-
+export async function Get_func() {
+    const response = await fetch("http://localhost:8000/core/home/", {
+        method: "GET",
+    })
+    const data = await response.json();
+    const table = document.getElementById("table");
+    if (!table) return;
+    table.innerHTML = '';
+    data.forEach((workTime: {
+            progress: string;
+            progress_bar: number;
+            date: string;
+        }) => {
+            table.innerHTML += `
+                <tr>
+                    <th>${workTime.progress}</th>
+                    <th>${workTime.progress_bar}</th>
+                    <th>${workTime.date.toString()}</th>
+                </tr>
+            `;
+        });
+    return data;
 }
