@@ -4,6 +4,14 @@ const data = await Get_func();
 let progress_bar_value: number = data[0].progress_bar;
 let time: number = 0;
 
+export function addTime() {
+    let second: number = parseInt(data[0].progress.slice(10, 12), 10);
+    let minute: number = parseInt(data[0].progress.slice(7, 9), 10);
+    let hour: number = parseInt(data[0].progress.slice(4, 6), 10);
+    time += (hour * 3600) + (minute * 60) + second;
+    return time;
+}
+
 function drawProgressBar() {
     const line = document.createElement("div");
     line.style.width = progress_bar_value + "px";
