@@ -1,6 +1,9 @@
 import {Patch_func} from "./fetch.js";
-import {ProgressBar} from "./progress_bar.js"
+import {ProgressBar} from "./progress_bar.js";
 import {Get_func} from "./fetch.js";
+import {DrawTable} from "./table.js";
+
+void DrawTable();
 
 const data = await Get_func();
 let seconds: number = parseInt(data[0].progress.slice(10, 12), 10);
@@ -20,6 +23,7 @@ function startTimer() {
             hours++;
             minutes = 0;
         }
+        void DrawTable();
         Patch_func(timeToProgress(), ProgressBar());
     }, 1000);
 }

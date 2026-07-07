@@ -1,3 +1,10 @@
+interface WorkTime {
+    id?: number;
+    progress: string;
+    progress_bar: number;
+    date: string;
+}
+
 async function Post_func() {
 
 }
@@ -17,22 +24,7 @@ export async function Get_func() {
     const response = await fetch("http://localhost:8000/core/home/", {
         method: "GET",
     })
-    const data = await response.json();
-    const table = document.getElementById("table");
-    if (!table) return;
-    table.innerHTML = '';
-    data.forEach((workTime: {
-            progress: string;
-            progress_bar: number;
-            date: string;
-        }) => {
-            table.innerHTML += `
-                <tr>
-                    <th>${workTime.progress}</th>
-                    <th>${workTime.progress_bar}</th>
-                    <th>${workTime.date.toString()}</th>
-                </tr>
-            `;
-        });
+        .then(res => res.json())
+    const data: Array<WorkTime> = response.json();
     return data;
 }

@@ -8,6 +8,7 @@
     "noEmitOnError":  true, // При помилці .js не створюється
     "removeComments": true, // Видалення коментарів при генерації .js
     "strict": true, // Строга типізація
-    "sourceMap": true // Генерація script.js.map
+    "sourceMap": true, // Генерація script.js.map
+    "moduleResolution": "bundler", // Вказує алгоритми пошуку файлів модулів
   }
 }
