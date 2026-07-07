@@ -24,7 +24,6 @@ export async function Get_func() {
     const response = await fetch("http://localhost:8000/core/home/", {
         method: "GET",
     })
-        .then(res => res.json())
-    const data: Array<WorkTime> = response.json();
+    const data: WorkTime[] = await response.json();
     return data;
 }

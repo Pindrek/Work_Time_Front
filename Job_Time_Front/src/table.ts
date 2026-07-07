@@ -14,9 +14,33 @@ export async function DrawTable() {
             <tr>
                 <th>${workTime.progress_bar}</th>
                 <th>${workTime.progress}</th>
-                <th>${workTime.date.toString()}</th>
+                <th>${DateFormat(workTime.date.toString())}</th>
             </tr>
         `;
     })
     return data;
+}
+
+function DateFormat(date: string): string {
+    let trueDate: string = '';
+    for (let i = 8; trueDate.length < 10;) {
+        trueDate += date[i]
+        if (i >= 5) {
+            if (i % 2 === 0 || i === 5) {
+                if (i === 6) i = -1;
+                i++;
+            }
+            else {
+                i -= 4;
+                trueDate += '.';
+            }
+        }
+        else {
+            i++;
+        }
+        if (trueDate.length === 5) {
+            trueDate += '.';
+        }
+    }
+    return trueDate;
 }
