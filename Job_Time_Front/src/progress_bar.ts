@@ -12,7 +12,7 @@ export function addTime() {
     return time;
 }
 
-function drawProgressBar() {
+function DrawProgressBar() {
     const line = document.createElement("div");
     line.style.width = progress_bar_value + "px";
 }

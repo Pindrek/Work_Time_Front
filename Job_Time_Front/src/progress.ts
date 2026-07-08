@@ -3,9 +3,11 @@ import {ProgressBar} from "./progress_bar.js";
 import {Get_func} from "./fetch.js";
 import {DrawTable} from "./table.js";
 import {addTime} from "./progress_bar.js"
+import {DrawStat} from "./statistic.js"
 
 addTime();
 void DrawTable();
+DrawStat();
 
 const data = await Get_func();
 let seconds: number = parseInt(data[0].progress.slice(10, 12), 10);
@@ -49,3 +51,7 @@ stopButton?.addEventListener("click", () => {
         timer = null;
     }
 })
+
+setInterval(() => {
+    DrawStat();
+}, 60000)
