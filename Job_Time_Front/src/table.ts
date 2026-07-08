@@ -38,5 +38,5 @@ function TimeFormat(time: string): string {
     let seconds: string = time.slice(10, 12).padStart(2, "0");
     let minutes: string = time.slice(7, 9).padStart(2, "0");
     let hours: string = time.slice(4, 6).padStart(2, "0");
-    return `${hours}:${minutes}:${seconds} / 06:00:00`;
+    return `${hours}:${minutes}:${seconds} / 08:00:00`;
 }

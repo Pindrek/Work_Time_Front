@@ -12,13 +12,9 @@ export function addTime() {
     return time;
 }
 
-export function MathProgress() {
-
-}
-
 export function ProgressBar(): number {
     time++;
-    if (progress_bar_value < 100 && time % 216 === 0) progress_bar_value++;
+    if (progress_bar_value < 100 && time % 288 === 0) progress_bar_value++; // 8 часов
     //if (progress_bar_value >= 100 && progress_bar_value < 200 && time % 72 === 0 && time !== 21600) progress_bar_value++;
     //if (progress_bar_value >= 200 && progress_bar_value < 300 && time % 72 === 0 && time !== 28800) progress_bar_value++;
     //if (progress_bar_value >= 300 && progress_bar_value < 400 && time % 72 === 0 && time !== 36000) progress_bar_value++;

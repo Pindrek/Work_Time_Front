@@ -5,8 +5,15 @@ interface WorkTime {
     date: string;
 }
 
-async function Post_func() {
-
+export async function Post_func() {
+    fetch("http://localhost:8000/core/home/", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+            progress: "P0DT00H00M00S",
+            progress_bar: 0,
+        })
+    });
 }
 
 export function Patch_func(progress_: string, progress_bar_: number) {

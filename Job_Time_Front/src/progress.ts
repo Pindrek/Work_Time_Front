@@ -2,9 +2,11 @@ import {Patch_func} from "./fetch.js";
 import {ProgressBar} from "./progress_bar.js";
 import {Get_func} from "./fetch.js";
 import {DrawTable} from "./table.js";
-import {addTime} from "./progress_bar.js"
-import {DrawStat} from "./statistic.js"
+import {addTime} from "./progress_bar.js";
+import {DrawStat} from "./statistic.js";
+import {Post_func} from "./fetch.js";
 
+await Post_func();
 addTime();
 void DrawTable();
 DrawStat();
