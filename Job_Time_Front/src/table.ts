@@ -12,7 +12,10 @@ export async function DrawTable() {
     }) => {
         table.innerHTML += `
             <tr>
-                <th>${workTime.progress_bar}</th>
+                <th>
+                    <div style="width: ${workTime.progress_bar}%; 
+                    background-color: ${workTime.progress_bar !== 100 ? "red" : "green"}; height: 100%"></div>
+                </th>
                 <th>${TimeFormat(workTime.progress)}</th>
                 <th>${DateFormat(workTime.date.toString())}</th>
             </tr>
