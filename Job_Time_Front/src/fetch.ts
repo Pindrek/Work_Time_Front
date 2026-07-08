@@ -6,7 +6,7 @@ interface WorkTime {
 }
 
 export async function Post_func() {
-    fetch("http://localhost:8000/core/home/", {
+    await fetch("http://localhost:8000/core/home/", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
@@ -16,8 +16,8 @@ export async function Post_func() {
     });
 }
 
-export function Patch_func(progress_: string, progress_bar_: number) {
-    fetch("http://localhost:8000/core/home/", {
+export async function Patch_func(progress_: string, progress_bar_: number) {
+    await fetch("http://localhost:8000/core/home/", {
         method: "PATCH",
         headers: {"content-type": "application/json"},
         body: JSON.stringify({

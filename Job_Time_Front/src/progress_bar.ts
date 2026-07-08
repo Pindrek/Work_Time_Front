@@ -1,10 +1,12 @@
 import {Get_func} from "./fetch.js";
 
-const data = await Get_func();
-let progress_bar_value: number = data[0].progress_bar;
+let progress_bar_value: number = 0;
 let time: number = 0;
 
-export function addTime() {
+export async function addTime() {
+    const data = await Get_func();
+    progress_bar_value = data[0].progress_bar;
+
     let second: number = parseInt(data[0].progress.slice(10, 12), 10);
     let minute: number = parseInt(data[0].progress.slice(7, 9), 10);
     let hour: number = parseInt(data[0].progress.slice(4, 6), 10);

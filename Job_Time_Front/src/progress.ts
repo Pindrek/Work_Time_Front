@@ -7,7 +7,7 @@ import {DrawStat} from "./statistic.js";
 import {Post_func} from "./fetch.js";
 
 await Post_func();
-addTime();
+await addTime();
 void DrawTable();
 DrawStat();
 
